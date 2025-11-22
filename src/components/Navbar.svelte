@@ -106,7 +106,9 @@
             <button
                 on:click={toggleTheme}
                 class="nav-link p-2 rounded-full text-black dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors"
-                aria-label="Toggle Theme"
+                aria-label={isDark
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"}
             >
                 {#if isDark}
                     <Sun size={20} />

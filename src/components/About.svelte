@@ -37,7 +37,9 @@
                     ></div>
                     <img
                         src="/assets/IMG_6668.jpg"
-                        alt="Prathamesh Ratthe"
+                        alt="Prathamesh Ratthe - Full Stack Developer and Cybersecurity Engineer"
+                        loading="lazy"
+                        decoding="async"
                         class="relative w-full h-full object-cover rounded-2xl border-2 border-white/10 shadow-2xl hover:scale-105 hover:brightness-110 transition-all duration-500"
                     />
                 </div>

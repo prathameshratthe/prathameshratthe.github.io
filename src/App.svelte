@@ -36,6 +36,7 @@
   class="bg-white dark:bg-dark min-h-screen text-gray-900 dark:text-white selection:bg-primary/30 selection:text-primary transition-colors duration-300"
 >
   <Navbar />
+  <Cursor />
   <Hero />
   <About />
   <Achievements />
