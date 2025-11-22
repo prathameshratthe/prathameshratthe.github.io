@@ -88,12 +88,12 @@
             Achievements & Certifications
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="flex flex-wrap justify-center gap-6">
             {#each achievements as item}
                 <a
                     href={item.link}
                     target="_blank"
-                    class={`achievement-card group relative p-6 rounded-xl border ${item.border} ${item.bg} hover:bg-opacity-20 transition-all duration-300 hover:-translate-y-1`}
+                    class={`achievement-card w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] group relative p-6 rounded-xl border ${item.border} ${item.bg} hover:bg-opacity-20 transition-all duration-300 hover:-translate-y-1`}
                 >
                     <div class="flex items-start justify-between mb-4">
                         <div class={`p-3 rounded-lg ${item.bg} ${item.color}`}>

@@ -35,10 +35,10 @@
             Tech Stack
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="flex flex-wrap justify-center gap-8">
             {#each techStack as category}
                 <div
-                    class="stack-category p-6 bg-gray-100 dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
+                    class="stack-category w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] p-6 bg-gray-100 dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
                 >
                     <h3
                         class="text-xl font-bold mb-6 text-primary flex items-center gap-2"
