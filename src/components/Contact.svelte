@@ -20,7 +20,7 @@
     let name = "";
     let email = "";
     let message = "";
-    let botcheck = ""; // Honeypot field
+    let botcheck = false; // Honeypot field
     let isSubmitting = false;
     let submitStatus: "idle" | "success" | "error" = "idle";
     let statusMessage = "";
