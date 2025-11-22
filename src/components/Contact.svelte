@@ -21,6 +21,7 @@
     let email = "";
     let message = "";
     let botcheck = false; // Honeypot field
+    let recaptchaToken = ""; // reCAPTCHA token
     let isSubmitting = false;
     let submitStatus: "idle" | "success" | "error" = "idle";
     let statusMessage = "";
@@ -49,6 +50,18 @@
         if (!emailRegex.test(email)) {
             submitStatus = "error";
             statusMessage = "Please provide a valid email address.";
+            setTimeout(() => {
+                submitStatus = "idle";
+                statusMessage = "";
+            }, 3000);
+            return;
+        }
+
+        // Check reCAPTCHA
+        const recaptchaResponse = (window as any).grecaptcha?.getResponse();
+        if (!recaptchaResponse) {
+            submitStatus = "error";
+            statusMessage = "Please complete the CAPTCHA verification.";
             setTimeout(() => {
                 submitStatus = "idle";
                 statusMessage = "";
@@ -236,6 +249,12 @@
                     bind:checked={botcheck}
                     style="display: none;"
                 />
+
+                <!-- Google reCAPTCHA -->
+                <div
+                    class="g-recaptcha"
+                    data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                ></div>
 
                 <button
                     type="submit"
