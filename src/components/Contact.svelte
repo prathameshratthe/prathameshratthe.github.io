@@ -2,11 +2,30 @@
     import { onMount } from "svelte";
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
-    import { Github, Linkedin, Mail, Send } from "lucide-svelte";
+    import {
+        Github,
+        Linkedin,
+        Mail,
+        Send,
+        Loader2,
+        CheckCircle,
+        AlertCircle,
+    } from "lucide-svelte";
 
     gsap.registerPlugin(ScrollTrigger);
 
     let contactSection: HTMLElement;
+
+    // Form State
+    let name = "";
+    let email = "";
+    let message = "";
+    let isSubmitting = false;
+    let submitStatus: "idle" | "success" | "error" = "idle";
+    let statusMessage = "";
+
+    // Web3Forms Access Key - User needs to replace this
+    const ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
 
     onMount(() => {
         gsap.from(".contact-content", {
@@ -20,6 +39,54 @@
             stagger: 0.2,
         });
     });
+
+    async function handleSubmit() {
+        if (!name || !email || !message) return;
+
+        isSubmitting = true;
+        submitStatus = "idle";
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: ACCESS_KEY,
+                    name,
+                    email,
+                    message,
+                }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                submitStatus = "success";
+                statusMessage =
+                    "Message sent successfully! I'll get back to you soon.";
+                name = "";
+                email = "";
+                message = "";
+            } else {
+                submitStatus = "error";
+                statusMessage =
+                    result.message || "Something went wrong. Please try again.";
+            }
+        } catch (error) {
+            submitStatus = "error";
+            statusMessage =
+                "Failed to send message. Please check your connection.";
+        } finally {
+            isSubmitting = false;
+            setTimeout(() => {
+                submitStatus = "idle";
+                statusMessage = "";
+            }, 5000);
+        }
+    }
 </script>
 
 <section
@@ -94,12 +161,14 @@
 
             <!-- Contact Form -->
             <form
+                on:submit|preventDefault={handleSubmit}
                 class="contact-content space-y-6 bg-white/5 p-8 rounded-2xl border border-white/10"
             >
                 <div class="relative group">
                     <input
                         type="text"
                         id="name"
+                        bind:value={name}
                         required
                         placeholder=" "
                         class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors peer"
@@ -116,6 +185,7 @@
                     <input
                         type="email"
                         id="email"
+                        bind:value={email}
                         required
                         placeholder=" "
                         class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors peer"
@@ -131,6 +201,7 @@
                 <div class="relative group">
                     <textarea
                         id="message"
+                        bind:value={message}
                         required
                         rows="4"
                         placeholder=" "
@@ -146,10 +217,31 @@
 
                 <button
                     type="submit"
-                    class="w-full py-3 bg-gradient-to-r from-primary to-secondary rounded-lg font-bold text-white shadow-lg shadow-primary/20 hover:shadow-primary/40 transform hover:-translate-y-1 transition-all flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    class="w-full py-3 bg-gradient-to-r from-primary to-secondary rounded-lg font-bold text-white shadow-lg shadow-primary/20 hover:shadow-primary/40 transform hover:-translate-y-1 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 >
-                    Send Message <Send size={18} />
+                    {#if isSubmitting}
+                        <Loader2 size={18} class="animate-spin" /> Sending...
+                    {:else}
+                        Send Message <Send size={18} />
+                    {/if}
                 </button>
+
+                {#if submitStatus === "success"}
+                    <div
+                        class="flex items-center gap-2 text-green-400 text-sm bg-green-400/10 p-3 rounded-lg"
+                    >
+                        <CheckCircle size={16} />
+                        {statusMessage}
+                    </div>
+                {:else if submitStatus === "error"}
+                    <div
+                        class="flex items-center gap-2 text-red-400 text-sm bg-red-400/10 p-3 rounded-lg"
+                    >
+                        <AlertCircle size={16} />
+                        {statusMessage}
+                    </div>
+                {/if}
             </form>
         </div>
     </div>
