@@ -198,7 +198,7 @@
                             <p class="text-sm text-gray-500 dark:text-gray-400">
                                 Location
                             </p>
-                            <p class="text-lg font-semibold">Pune, India</p>
+                            <p class="text-lg font-semibold">Nagpur, India</p>
                         </div>
                     </div>
 
