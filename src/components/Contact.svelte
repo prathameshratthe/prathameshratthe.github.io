@@ -24,6 +24,13 @@
     let isSubmitting = false;
     let submitStatus: "idle" | "success" | "error" = "idle";
     let statusMessage = "";
+    let lastSubmitTime = 0; // Rate limiting
+
+    // Input length limits (security)
+    const MAX_NAME_LENGTH = 100;
+    const MAX_EMAIL_LENGTH = 254;
+    const MAX_MESSAGE_LENGTH = 5000;
+    const MIN_SUBMIT_INTERVAL = 5000; // 5 seconds between submissions
 
     // Web3Forms Access Key
     const ACCESS_KEY = "274fb1d1-b4e9-4451-ae2e-a5c16071507c";
@@ -44,9 +51,31 @@
     async function handleSubmit() {
         if (!name || !email || !message) return;
 
-        // Strict Email Validation
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!emailRegex.test(email)) {
+        // Input length validation (security)
+        if (name.length > MAX_NAME_LENGTH) {
+            submitStatus = "error";
+            statusMessage = `Name must be less than ${MAX_NAME_LENGTH} characters.`;
+            setTimeout(() => {
+                submitStatus = "idle";
+                statusMessage = "";
+            }, 3000);
+            return;
+        }
+
+        if (message.length > MAX_MESSAGE_LENGTH) {
+            submitStatus = "error";
+            statusMessage = `Message must be less than ${MAX_MESSAGE_LENGTH} characters.`;
+            setTimeout(() => {
+                submitStatus = "idle";
+                statusMessage = "";
+            }, 3000);
+            return;
+        }
+
+        // Improved email validation (security)
+        const emailRegex =
+            /^[a-zA-Z0-9][a-zA-Z0-9._-]*[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9.-]*[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
+        if (email.length > MAX_EMAIL_LENGTH || !emailRegex.test(email)) {
             submitStatus = "error";
             statusMessage = "Please provide a valid email address.";
             setTimeout(() => {
@@ -55,6 +84,20 @@
             }, 3000);
             return;
         }
+
+        // Rate limiting (security)
+        const now = Date.now();
+        if (now - lastSubmitTime < MIN_SUBMIT_INTERVAL) {
+            submitStatus = "error";
+            statusMessage =
+                "Please wait a few seconds before submitting again.";
+            setTimeout(() => {
+                submitStatus = "idle";
+                statusMessage = "";
+            }, 3000);
+            return;
+        }
+        lastSubmitTime = now;
 
         isSubmitting = true;
         submitStatus = "idle";
@@ -184,6 +227,7 @@
                         id="name"
                         bind:value={name}
                         required
+                        maxlength="100"
                         placeholder=" "
                         class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors peer"
                     />
@@ -201,6 +245,7 @@
                         id="email"
                         bind:value={email}
                         required
+                        maxlength="254"
                         placeholder=" "
                         class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors peer"
                     />
@@ -218,6 +263,7 @@
                         bind:value={message}
                         required
                         rows="4"
+                        maxlength="5000"
                         placeholder=" "
                         class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors peer resize-none"
                     ></textarea>
