@@ -26,13 +26,17 @@
     let isSubmitting = false;
     let submitStatus: "idle" | "success" | "error" = "idle";
     let statusMessage = "";
-    let lastSubmitTime = 0; // Rate limiting
+    let captchaToken = ""; // hCaptcha token
+
+    // Enhanced Rate Limiting (security)
+    const RATE_LIMIT_KEY = "contact_form_submissions";
+    const MAX_SUBMISSIONS_PER_HOUR = 3;
+    const MIN_SUBMIT_INTERVAL = 5000; // 5 seconds between submissions
 
     // Input length limits (security)
     const MAX_NAME_LENGTH = 100;
     const MAX_EMAIL_LENGTH = 254;
     const MAX_MESSAGE_LENGTH = 5000;
-    const MIN_SUBMIT_INTERVAL = 5000; // 5 seconds between submissions
 
     // Web3Forms Access Key
     const ACCESS_KEY = "274fb1d1-b4e9-4451-ae2e-a5c16071507c";
@@ -48,10 +52,78 @@
             duration: 0.8,
             stagger: 0.2,
         });
+
+        // Load hCaptcha script
+        const script = document.createElement("script");
+        script.src = "https://js.hcaptcha.com/1/api.js";
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+
+        // Set up hCaptcha callback
+        (window as any).onCaptchaVerify = (token: string) => {
+            captchaToken = token;
+        };
     });
+
+    // Enhanced rate limiting check
+    function checkRateLimit(): boolean {
+        try {
+            const submissions = JSON.parse(
+                localStorage.getItem(RATE_LIMIT_KEY) || "[]",
+            );
+            const oneHourAgo = Date.now() - 60 * 60 * 1000;
+            const recentSubmissions = submissions.filter(
+                (time: number) => time > oneHourAgo,
+            );
+
+            return recentSubmissions.length < MAX_SUBMISSIONS_PER_HOUR;
+        } catch {
+            return true; // Allow if localStorage fails
+        }
+    }
+
+    function recordSubmission() {
+        try {
+            const submissions = JSON.parse(
+                localStorage.getItem(RATE_LIMIT_KEY) || "[]",
+            );
+            submissions.push(Date.now());
+            // Keep only last 24 hours of submissions
+            const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
+            const filtered = submissions.filter(
+                (time: number) => time > oneDayAgo,
+            );
+            localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(filtered));
+        } catch {
+            // Silently fail if localStorage is unavailable
+        }
+    }
 
     async function handleSubmit() {
         if (!name || !email || !message) return;
+
+        // CAPTCHA validation (security)
+        if (!captchaToken) {
+            submitStatus = "error";
+            statusMessage = "Please complete the CAPTCHA verification.";
+            setTimeout(() => {
+                submitStatus = "idle";
+                statusMessage = "";
+            }, 3000);
+            return;
+        }
+
+        // Enhanced rate limiting check (security)
+        if (!checkRateLimit()) {
+            submitStatus = "error";
+            statusMessage = `You've reached the maximum of ${MAX_SUBMISSIONS_PER_HOUR} submissions per hour. Please try again later.`;
+            setTimeout(() => {
+                submitStatus = "idle";
+                statusMessage = "";
+            }, 5000);
+            return;
+        }
 
         // Input length validation (security)
         if (name.length > MAX_NAME_LENGTH) {
@@ -87,20 +159,6 @@
             return;
         }
 
-        // Rate limiting (security)
-        const now = Date.now();
-        if (now - lastSubmitTime < MIN_SUBMIT_INTERVAL) {
-            submitStatus = "error";
-            statusMessage =
-                "Please wait a few seconds before submitting again.";
-            setTimeout(() => {
-                submitStatus = "idle";
-                statusMessage = "";
-            }, 3000);
-            return;
-        }
-        lastSubmitTime = now;
-
         isSubmitting = true;
         submitStatus = "idle";
 
@@ -117,6 +175,7 @@
                     email,
                     message,
                     botcheck, // Honeypot
+                    "h-captcha-response": captchaToken, // hCaptcha token
                 }),
             });
 
@@ -126,9 +185,15 @@
                 submitStatus = "success";
                 statusMessage =
                     "Message sent successfully! I'll get back to you soon.";
+                recordSubmission(); // Record successful submission
                 name = "";
                 email = "";
                 message = "";
+                captchaToken = ""; // Reset captcha
+                // Reset hCaptcha widget
+                if ((window as any).hcaptcha) {
+                    (window as any).hcaptcha.reset();
+                }
             } else {
                 submitStatus = "error";
                 statusMessage =
@@ -287,6 +352,14 @@
                         bind:checked={botcheck}
                         style="display: none;"
                     />
+
+                    <!-- hCaptcha Widget -->
+                    <div
+                        class="h-captcha"
+                        data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                        data-callback="onCaptchaVerify"
+                        data-theme="light"
+                    ></div>
 
                     <button
                         type="submit"
