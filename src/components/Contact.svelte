@@ -19,18 +19,6 @@
     // Form State
     let name = "";
     let email = "";
-    let message = "";
-    let isSubmitting = false;
-    let submitStatus: "idle" | "success" | "error" = "idle";
-    let statusMessage = "";
-
-    // Web3Forms Access Key - User needs to replace this
-    const ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
-
-    onMount(() => {
-        gsap.from(".contact-content", {
-            scrollTrigger: {
-                trigger: contactSection,
                 start: "top 80%",
             },
             y: 30,
