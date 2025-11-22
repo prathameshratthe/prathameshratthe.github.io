@@ -19,6 +19,18 @@
     // Form State
     let name = "";
     let email = "";
+    let message = "";
+    let isSubmitting = false;
+    let submitStatus: "idle" | "success" | "error" = "idle";
+    let statusMessage = "";
+
+    // Web3Forms Access Key
+    const ACCESS_KEY = "274fb1d1-b4e9-4451-ae2e-a5c16071507c";
+
+    onMount(() => {
+        gsap.from(".contact-content", {
+            scrollTrigger: {
+                trigger: contactSection,
                 start: "top 80%",
             },
             y: 30,
