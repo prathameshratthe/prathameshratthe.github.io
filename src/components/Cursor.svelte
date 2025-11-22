@@ -31,7 +31,7 @@
 
 <div
     bind:this={cursor}
-    class="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+    class="fixed top-0 left-0 w-5 h-5 pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
 >
     <img
         src="/assets/cursor.png"
@@ -42,7 +42,7 @@
 
 <div
     bind:this={follower}
-    class="fixed top-0 left-0 w-12 h-12 pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 opacity-50 mix-blend-difference"
+    class="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 opacity-50 mix-blend-difference"
 >
     <div
         class="w-full h-full rounded-full border border-primary/50 bg-primary/10 blur-sm"
