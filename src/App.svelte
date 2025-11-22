@@ -10,6 +10,7 @@
   import Footer from "./components/Footer.svelte";
   import ResumeModal from "./components/ResumeModal.svelte";
   import Cursor from "./components/Cursor.svelte";
+  import ScrollToTop from "./components/ScrollToTop.svelte";
   import { onMount } from "svelte";
 
   // Smooth scrolling for anchor links
@@ -45,4 +46,5 @@
   <Footer />
   <ResumeModal />
   <Cursor />
+  <ScrollToTop />
 </main>

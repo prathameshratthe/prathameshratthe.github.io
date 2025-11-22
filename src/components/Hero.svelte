@@ -14,7 +14,7 @@
 
   const roles = [
     "Full Stack Developer",
-    "Cybersecurity Enthusiast",
+    "Cybersecurity Engineer",
     "AI/ML Engineer",
   ];
   let currentRoleIndex = 0;
