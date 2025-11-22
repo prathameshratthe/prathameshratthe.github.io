@@ -163,7 +163,7 @@
         <h2
             class="text-3xl md:text-4xl font-heading font-bold mb-12 text-center"
         >
-            <span class="text-primary">05.</span> Get In Touch
+            Get In Touch
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">

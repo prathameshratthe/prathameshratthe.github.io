@@ -57,7 +57,7 @@
         <h2
             class="text-3xl md:text-4xl font-heading font-bold mb-12 text-center"
         >
-            <span class="text-primary">03.</span> Featured Projects
+            Featured Projects
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">

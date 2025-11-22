@@ -48,7 +48,7 @@
                 <h2
                     class="text-3xl md:text-4xl font-heading font-bold mb-6 flex items-center gap-3"
                 >
-                    <span class="text-primary">01.</span> About Me
+                    About Me
                 </h2>
 
                 <p class="text-gray-300 text-lg leading-relaxed mb-6">

@@ -31,7 +31,7 @@
         <h2
             class="text-3xl md:text-4xl font-heading font-bold mb-12 flex items-center gap-3"
         >
-            <span class="text-primary">04.</span> Experience
+            Experience
         </h2>
 
         <div
