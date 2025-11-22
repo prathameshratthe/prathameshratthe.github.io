@@ -53,6 +53,17 @@
                 submitStatus = "idle";
                 statusMessage = "";
             }, 3000);
+            return;
+        }
+
+        isSubmitting = true;
+        submitStatus = "idle";
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
                     Accept: "application/json",
                 },
                 body: JSON.stringify({
