@@ -253,7 +253,7 @@
                 <!-- Google reCAPTCHA -->
                 <div
                     class="g-recaptcha"
-                    data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                    data-sitekey="6LcCyBQsAAAAAODAWBn7cCMVJkNZC7NZWNGy6Vj_"
                 ></div>
 
                 <button
