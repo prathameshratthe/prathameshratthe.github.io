@@ -60,7 +60,10 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {#each filteredProjects as project, i (project.name)}
                 <!-- svelte-ignore a11y_no_static_element_interactions -->
-                <div
+                <!-- svelte-ignore a11y_no_static_element_interactions -->
+                <a
+                    href={project.repoLink}
+                    target="_blank"
                     id={`project-card-${i}`}
                     class="project-card h-full flex flex-col group relative bg-gray-100 dark:bg-white/5 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50"
                 >
@@ -72,13 +75,11 @@
                                 {project.name}
                             </h3>
                             <div class="flex gap-4">
-                                <a
-                                    href={project.repoLink}
-                                    target="_blank"
-                                    class="text-gray-500 dark:text-gray-400 hover:text-primary transition-colors"
+                                <div
+                                    class="text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors"
                                 >
                                     <Github size={20} />
-                                </a>
+                                </div>
                             </div>
                         </div>
 
@@ -110,7 +111,7 @@
                             {/each}
                         </div>
                     </div>
-                </div>
+                </a>
             {/each}
         </div>
     </div>
