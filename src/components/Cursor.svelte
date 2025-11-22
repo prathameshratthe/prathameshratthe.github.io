@@ -39,21 +39,21 @@
 
 <div
     bind:this={cursor}
-    class="fixed top-0 left-0 w-[26px] h-[26px] pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+    class="fixed top-0 left-0 w-[30px] h-[30px] pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"
 >
     <img
         src="/assets/cursor.png"
         alt="cursor"
-        class="w-full h-full object-contain"
+        class="w-full h-full object-contain drop-shadow-lg"
     />
 </div>
 
 <div
     bind:this={follower}
-    class="fixed top-0 left-0 w-10 h-10 pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+    class="fixed top-0 left-0 w-12 h-12 pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2"
 >
     <div
-        class="w-full h-full rounded-full border border-primary/50 bg-primary/10 blur-sm"
+        class="w-full h-full rounded-full border-2 border-orange-400/40 bg-orange-400/10 blur-sm"
     ></div>
 </div>
 
