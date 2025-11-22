@@ -4,7 +4,6 @@
 
 :root {
   font-family: 'Inter', sans-serif;
-  /* Default to dark mode colors if JS fails, but we'll control via class */
 }
 
 body {
@@ -12,7 +11,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   cursor: none;
-  @apply bg-white text-gray-900 dark:bg-dark dark:text-white;
+  @apply bg-white text-black dark:bg-dark dark:text-white;
 }
 
 a,
@@ -21,32 +20,28 @@ button,
   cursor: none;
 }
 
+/* Selection Color */
+::selection {
+  @apply bg-primary text-white;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  @apply bg-gray-100 dark:bg-dark;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  @apply bg-gray-300 dark:bg-gray-700;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  @apply bg-gray-400 dark:bg-gray-600;
 }
-
-/* Larger Selection/Hover Areas */
-/* Larger Selection/Hover Areas - Removed to fix layout issues */
-/* a,
-button {
-  padding: 8px !important;
-  margin: -8px;
-  transition: transform 0.2s ease;
-} */
 
 /* Hover Effect for Links and Buttons */
 a:hover,

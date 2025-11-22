@@ -74,12 +74,12 @@
 </script>
 
 <nav
-    class={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 dark:bg-dark/80 backdrop-blur-md py-4 shadow-lg" : "bg-transparent py-6"}`}
+    class={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 dark:bg-dark/80 backdrop-blur-md py-4 shadow-lg border-b border-gray-200 dark:border-white/10" : "bg-transparent py-6"}`}
 >
     <div class="container mx-auto px-6 flex justify-between items-center">
         <a
             href="#"
-            class="nav-logo text-2xl font-heading font-bold text-gray-900 dark:text-white"
+            class="nav-logo text-2xl font-heading font-bold text-black dark:text-white"
         >
             PR<span class="text-primary">.</span>
         </a>
@@ -89,18 +89,18 @@
             {#each ["About", "Skills", "Projects", "Experience", "Contact"] as item}
                 <a
                     href={`#${item.toLowerCase() === "skills" ? "stack" : item.toLowerCase()}`}
-                    class="nav-link group relative text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors py-2"
+                    class="nav-link group relative text-black dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors py-2"
                 >
                     {item}
                     <span
-                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-primary-dark transition-all duration-300 group-hover:w-full"
                     ></span>
                 </a>
             {/each}
 
             <button
                 on:click={toggleTheme}
-                class="nav-link p-2 rounded-full text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                class="nav-link p-2 rounded-full text-black dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors"
                 aria-label="Toggle Theme"
             >
                 {#if isDark}
@@ -115,7 +115,7 @@
                     <a
                         href="/resume.pdf"
                         download="Prathamesh_Ratthe_Resume.pdf"
-                        class="nav-link px-5 py-2 bg-primary/10 border border-primary/50 rounded-full text-primary font-semibold hover:bg-primary hover:text-dark transition-all cursor-pointer hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:-translate-y-0.5 flex items-center gap-2"
+                        class="nav-link px-5 py-2 bg-white dark:bg-white/5 border-2 border-primary dark:border-primary-dark rounded-full text-primary dark:text-primary-dark font-semibold hover:bg-primary hover:text-white dark:hover:bg-primary-dark dark:hover:text-dark transition-all cursor-pointer hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2"
                     >
                         <Download size={18} /> Resume
                     </a>
@@ -125,7 +125,7 @@
 
         <!-- Mobile Menu Button -->
         <button
-            class="nav-logo md:hidden text-gray-900 dark:text-white"
+            class="nav-logo md:hidden text-black dark:text-white"
             on:click={toggleMenu}
         >
             {#if isMenuOpen}
@@ -140,19 +140,19 @@
     {#if isMenuOpen}
         <div
             transition:slide={{ duration: 300 }}
-            class="md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-white/10 py-4 px-6 flex flex-col gap-4 shadow-2xl"
+            class="md:hidden absolute top-full left-0 w-full bg-white dark:bg-dark/95 backdrop-blur-md border-b-2 border-gray-200 dark:border-white/10 py-4 px-6 flex flex-col gap-4 shadow-2xl"
         >
             {#each ["About", "Skills", "Projects", "Experience", "Contact"] as item}
                 <a
                     href={`#${item.toLowerCase() === "skills" ? "stack" : item.toLowerCase()}`}
-                    class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                    class="text-black dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors"
                     on:click={toggleMenu}>{item}</a
                 >
             {/each}
 
             <button
                 on:click={toggleTheme}
-                class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors flex items-center gap-2"
+                class="text-black dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark transition-colors flex items-center gap-2"
             >
                 {#if isDark}
                     <Sun size={20} /> Light Mode
@@ -164,7 +164,7 @@
             <a
                 href="/resume.pdf"
                 download="Prathamesh_Ratthe_Resume.pdf"
-                class="text-primary font-semibold text-left flex items-center gap-2"
+                class="text-primary dark:text-primary-dark font-semibold text-left flex items-center gap-2"
                 on:click={toggleMenu}
             >
                 <Download size={18} /> Download Resume

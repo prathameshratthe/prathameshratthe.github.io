@@ -38,10 +38,10 @@
         <div class="flex flex-wrap justify-center gap-8">
             {#each techStack as category}
                 <div
-                    class="stack-category group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] p-6 bg-gray-100 dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
+                    class="stack-category group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] p-6 bg-white dark:bg-white/5 rounded-2xl border-2 border-gray-200 dark:border-white/10 hover:border-primary dark:hover:border-primary-dark transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
                     <h3
-                        class="text-xl font-bold mb-6 text-gray-900 dark:text-white group-hover:text-primary transition-colors flex items-center gap-2"
+                        class="text-xl font-bold mb-6 text-black dark:text-white group-hover:text-primary dark:group-hover:text-primary-dark transition-colors flex items-center gap-2"
                     >
                         {#if category.name === "Frontend"}
                             <Layout size={20} />
@@ -55,7 +55,7 @@
                     <div class="flex flex-wrap gap-3">
                         {#each category.skills as skill}
                             <span
-                                class="px-3 py-1 bg-white dark:bg-white/10 rounded-full text-sm text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/5 hover:text-primary hover:border-primary/50 transition-colors cursor-default"
+                                class="px-3 py-1 bg-gray-50 dark:bg-white/10 rounded-full text-sm text-black dark:text-gray-300 border border-gray-200 dark:border-white/5 hover:text-primary dark:hover:text-primary-dark hover:border-primary dark:hover:border-primary-dark transition-colors cursor-default"
                             >
                                 {skill}
                             </span>

@@ -113,13 +113,13 @@
           class="text-5xl md:text-7xl font-heading font-bold mb-6 leading-tight"
         >
           <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+            class="text-black dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-primary-dark dark:to-secondary"
             >Prathamesh Ratthe</span
           >
         </h1>
 
         <p
-          class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-10 font-light h-8"
+          class="text-xl md:text-2xl text-gray-700 dark:text-gray-400 mb-10 font-light h-8"
         >
           {displayedText}<span class="animate-pulse">|</span>
         </p>
@@ -129,7 +129,7 @@
         >
           <a
             href="#projects"
-            class="group relative px-8 py-3 bg-primary/10 border border-primary/50 rounded-full text-primary font-semibold overflow-hidden transition-all hover:bg-primary hover:text-dark hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]"
+            class="group relative px-8 py-3 bg-white dark:bg-primary-dark/10 border-2 border-primary dark:border-primary-dark rounded-full text-primary dark:text-primary-dark font-semibold overflow-hidden transition-all hover:bg-primary hover:text-white dark:hover:bg-primary-dark dark:hover:text-dark hover:shadow-lg"
           >
             <span class="relative z-10 flex items-center gap-2">
               View Projects <ArrowRight size={18} />
@@ -138,7 +138,7 @@
 
           <button
             on:click={openResumeModal}
-            class="group px-8 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full text-gray-900 dark:text-white font-semibold hover:bg-gray-200 dark:hover:bg-white/10 transition-all flex items-center gap-2 cursor-pointer"
+            class="group px-8 py-3 bg-white dark:bg-white/5 border-2 border-black dark:border-white/10 rounded-full text-black dark:text-white font-semibold hover:bg-black hover:text-white dark:hover:bg-white/10 transition-all flex items-center gap-2 cursor-pointer"
           >
             <Download size={18} /> Download Resume
           </button>
