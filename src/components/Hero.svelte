@@ -125,7 +125,7 @@
         </p>
 
         <div
-          class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-stretch sm:items-center w-full sm:w-auto"
+          class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-stretch sm:items-center w-full sm:w-auto"
         >
           <a
             href="#projects"

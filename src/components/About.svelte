@@ -38,7 +38,7 @@
                     <img
                         src="/assets/IMG_6668.jpg"
                         alt="Prathamesh Ratthe"
-                        class="relative w-full h-full object-cover rounded-2xl border-2 border-white/10 shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
+                        class="relative w-full h-full object-cover rounded-2xl border-2 border-white/10 shadow-2xl hover:scale-105 hover:brightness-110 transition-all duration-500"
                     />
                 </div>
             </div>

@@ -31,12 +31,17 @@
     }
 
     onMount(() => {
-        // Initialize Theme
-        if (
-            localStorage.theme === "dark" ||
-            (!("theme" in localStorage) &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches)
+        // Initialize Theme - Default to Light Mode
+        if (localStorage.theme === "dark") {
+            document.documentElement.classList.add("dark");
+            isDark = true;
+        } else if (
+            localStorage.theme === "light" ||
+            !("theme" in localStorage)
         ) {
+            document.documentElement.classList.remove("dark");
+            isDark = false;
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             document.documentElement.classList.add("dark");
             isDark = true;
         } else {
