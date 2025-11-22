@@ -28,31 +28,6 @@
             stagger: 0.2,
         });
     });
-
-    function handleMouseMove(e: MouseEvent, index: number) {
-        const card = document.getElementById(`project-card-${index}`);
-        if (!card) return;
-
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / centerY) * -5;
-        const rotateY = ((x - centerX) / centerX) * 5;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    }
-
-    function handleMouseLeave(index: number) {
-        const card = document.getElementById(`project-card-${index}`);
-        if (card) {
-            card.style.transform =
-                "perspective(1000px) rotateX(0deg) rotateY(0deg)";
-        }
-    }
 </script>
 
 <section
@@ -87,9 +62,7 @@
                 <!-- svelte-ignore a11y_no_static_element_interactions -->
                 <div
                     id={`project-card-${i}`}
-                    class="project-card group relative bg-gray-100 dark:bg-white/5 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-500"
-                    on:mousemove={(e) => handleMouseMove(e, i)}
-                    on:mouseleave={() => handleMouseLeave(i)}
+                    class="project-card group relative bg-gray-100 dark:bg-white/5 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50"
                 >
                     <div class="p-8 relative z-10">
                         <div class="flex justify-between items-start mb-4">
