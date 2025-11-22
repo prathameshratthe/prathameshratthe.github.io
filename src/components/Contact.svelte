@@ -20,6 +20,7 @@
     let name = "";
     let email = "";
     let message = "";
+    let botcheck = ""; // Honeypot field
     let isSubmitting = false;
     let submitStatus: "idle" | "success" | "error" = "idle";
     let statusMessage = "";
@@ -70,6 +71,7 @@
                     name,
                     email,
                     message,
+                    botcheck, // Honeypot
                 }),
             });
 
@@ -226,6 +228,14 @@
                         Message
                     </label>
                 </div>
+
+                <!-- Honeypot Field (Hidden from users, catches bots) -->
+                <input
+                    type="checkbox"
+                    name="botcheck"
+                    bind:checked={botcheck}
+                    style="display: none;"
+                />
 
                 <button
                     type="submit"
