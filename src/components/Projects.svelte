@@ -56,14 +56,13 @@
                 </button>
             {/each}
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {#each filteredProjects as project, i (project.name)}
-                <!-- svelte-ignore a11y_no_static_element_interactions -->
                 <!-- svelte-ignore a11y_no_static_element_interactions -->
                 <a
                     href={project.repoLink}
                     target="_blank"
+                    rel="noopener noreferrer"
                     id={`project-card-${i}`}
                     class="project-card h-full flex flex-col group relative bg-white dark:bg-white/5 rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-white/10 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-2xl hover:border-primary dark:hover:border-primary-dark"
                 >

@@ -271,6 +271,7 @@
                         <a
                             href="https://github.com/prathameshratthe"
                             target="_blank"
+                            rel="noopener noreferrer"
                             class="p-3 bg-white dark:bg-white/5 border-2 border-gray-200 dark:border-white/10 rounded-lg text-black dark:text-white hover:text-primary dark:hover:text-primary-dark hover:border-primary dark:hover:border-primary-dark transition-all hover:-translate-y-1"
                         >
                             <Github size={24} />
@@ -278,6 +279,7 @@
                         <a
                             href="https://linkedin.com/in/prathameshratthe"
                             target="_blank"
+                            rel="noopener noreferrer"
                             class="p-3 bg-white dark:bg-white/5 border-2 border-gray-200 dark:border-white/10 rounded-lg text-black dark:text-white hover:text-primary dark:hover:text-primary-dark hover:border-primary dark:hover:border-primary-dark transition-all hover:-translate-y-1"
                         >
                             <Linkedin size={24} />
@@ -285,6 +287,7 @@
                         <a
                             href="https://twitter.com/prathameshratthe"
                             target="_blank"
+                            rel="noopener noreferrer"
                             class="p-3 bg-white dark:bg-white/5 border-2 border-gray-200 dark:border-white/10 rounded-lg text-black dark:text-white hover:text-primary dark:hover:text-primary-dark hover:border-primary dark:hover:border-primary-dark transition-all hover:-translate-y-1"
                         >
                             <Twitter size={24} />
