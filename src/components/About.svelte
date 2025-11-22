@@ -25,7 +25,7 @@
 <section
     bind:this={aboutSection}
     id="about"
-    class="py-20 bg-dark text-white relative overflow-hidden"
+    class="py-20 bg-white dark:bg-dark text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300"
 >
     <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row items-center gap-12">
@@ -51,7 +51,9 @@
                     About Me
                 </h2>
 
-                <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                <p
+                    class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6"
+                >
                     I'm a <span class="text-primary font-semibold"
                         >Software Developer</span
                     > passionate about building secure, scalable solutions. My work
@@ -60,58 +62,60 @@
                     software experiences.
                 </p>
 
-                <p class="text-gray-400 mb-8 italic">
+                <p class="text-gray-500 dark:text-gray-400 mb-8 italic">
                     "Building scalable apps, engineering backends, deploying
                     services, and drinking coffee."
                 </p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div
-                        class="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-primary/30 transition-all group"
+                        class="p-4 bg-gray-100 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/5 hover:border-primary/30 transition-all group"
                     >
                         <Code
                             class="text-primary mb-3 group-hover:scale-110 transition-transform"
                             size={32}
                         />
                         <h3 class="font-bold mb-1">Full Stack</h3>
-                        <p class="text-sm text-gray-400">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
                             React, Svelte, FastAPI, Node.js
                         </p>
                     </div>
 
                     <div
-                        class="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-secondary/30 transition-all group"
+                        class="p-4 bg-gray-100 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/5 hover:border-secondary/30 transition-all group"
                     >
                         <Shield
                             class="text-secondary mb-3 group-hover:scale-110 transition-transform"
                             size={32}
                         />
                         <h3 class="font-bold mb-1">Security</h3>
-                        <p class="text-sm text-gray-400">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
                             Cybersecurity, Encryption, Auth
                         </p>
                     </div>
 
                     <div
-                        class="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-primary/30 transition-all group"
+                        class="p-4 bg-gray-100 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/5 hover:border-primary/30 transition-all group"
                     >
                         <Server
                             class="text-primary mb-3 group-hover:scale-110 transition-transform"
                             size={32}
                         />
                         <h3 class="font-bold mb-1">DevOps</h3>
-                        <p class="text-sm text-gray-400">Docker, AWS, CI/CD</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                            Docker, AWS, CI/CD
+                        </p>
                     </div>
 
                     <div
-                        class="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-secondary/30 transition-all group"
+                        class="p-4 bg-gray-100 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/5 hover:border-secondary/30 transition-all group"
                     >
                         <Coffee
                             class="text-secondary mb-3 group-hover:scale-110 transition-transform"
                             size={32}
                         />
                         <h3 class="font-bold mb-1">Lifestyle</h3>
-                        <p class="text-sm text-gray-400">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
                             Coffee, Coding, Learning
                         </p>
                     </div>

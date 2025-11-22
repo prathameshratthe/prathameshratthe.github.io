@@ -10,6 +10,8 @@
         Loader2,
         CheckCircle,
         AlertCircle,
+        MapPin,
+        Twitter,
     } from "lucide-svelte";
 
     gsap.registerPlugin(ScrollTrigger);
@@ -149,167 +151,168 @@
 <section
     bind:this={contactSection}
     id="contact"
-    class="py-20 bg-dark text-white relative overflow-hidden"
+    class="py-20 bg-white dark:bg-dark text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300"
 >
-    <!-- Background Glow -->
-    <div
-        class="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"
-    ></div>
-    <div
-        class="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none"
-    ></div>
-
-    <div class="container mx-auto px-6 max-w-4xl relative z-10">
+    <div class="container mx-auto px-6 relative z-10">
         <h2
             class="text-3xl md:text-4xl font-heading font-bold mb-12 text-center"
         >
             Get In Touch
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
             <!-- Contact Info -->
             <div class="contact-content space-y-8">
-                <p class="text-gray-300 text-lg leading-relaxed">
-                    I'm currently looking for new opportunities. Whether you
-                    have a question or just want to say hi, I'll try my best to
-                    get back to you!
+                <h3 class="text-2xl font-bold mb-6">Let's Connect</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-8">
+                    I'm always open to discussing new projects, creative ideas,
+                    or opportunities to be part of your visions.
                 </p>
 
-                <div class="space-y-4">
-                    <a
-                        href="mailto:prathameshratthe@gmail.com"
-                        class="flex items-center gap-4 text-gray-400 hover:text-primary transition-colors group"
-                    >
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 group">
                         <div
-                            class="p-3 bg-white/5 rounded-lg group-hover:bg-primary/10 transition-colors"
+                            class="p-3 bg-primary/10 rounded-lg text-primary group-hover:scale-110 transition-transform"
                         >
                             <Mail size={24} />
                         </div>
-                        <span class="text-lg">prathameshratthe@gmail.com</span>
-                    </a>
-
-                    <a
-                        href="https://linkedin.com/in/prathameshratthe"
-                        target="_blank"
-                        class="flex items-center gap-4 text-gray-400 hover:text-primary transition-colors group"
-                    >
-                        <div
-                            class="p-3 bg-white/5 rounded-lg group-hover:bg-primary/10 transition-colors"
-                        >
-                            <Linkedin size={24} />
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                Email
+                            </p>
+                            <a
+                                href="mailto:prathameshratthe@gmail.com"
+                                class="text-lg font-semibold hover:text-primary transition-colors"
+                                >prathameshratthe@gmail.com</a
+                            >
                         </div>
-                        <span class="text-lg">LinkedIn</span>
-                    </a>
+                    </div>
 
-                    <a
-                        href="https://github.com/prathameshratthe"
-                        target="_blank"
-                        class="flex items-center gap-4 text-gray-400 hover:text-primary transition-colors group"
-                    >
+                    <div class="flex items-center gap-4 group">
                         <div
-                            class="p-3 bg-white/5 rounded-lg group-hover:bg-primary/10 transition-colors"
+                            class="p-3 bg-secondary/10 rounded-lg text-secondary group-hover:scale-110 transition-transform"
+                        >
+                            <MapPin size={24} />
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                Location
+                            </p>
+                            <p class="text-lg font-semibold">Pune, India</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 pt-4">
+                        <a
+                            href="https://github.com/prathameshratthe"
+                            target="_blank"
+                            class="p-3 bg-gray-100 dark:bg-white/5 rounded-lg hover:bg-primary hover:text-dark transition-all hover:-translate-y-1"
                         >
                             <Github size={24} />
-                        </div>
-                        <span class="text-lg">GitHub</span>
-                    </a>
+                        </a>
+                        <a
+                            href="https://linkedin.com/in/prathameshratthe"
+                            target="_blank"
+                            class="p-3 bg-gray-100 dark:bg-white/5 rounded-lg hover:bg-primary hover:text-dark transition-all hover:-translate-y-1"
+                        >
+                            <Linkedin size={24} />
+                        </a>
+                        <a
+                            href="https://twitter.com/prathameshratthe"
+                            target="_blank"
+                            class="p-3 bg-gray-100 dark:bg-white/5 rounded-lg hover:bg-primary hover:text-dark transition-all hover:-translate-y-1"
+                        >
+                            <Twitter size={24} />
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <!-- Contact Form -->
             <form
                 on:submit|preventDefault={handleSubmit}
-                class="contact-content space-y-6 bg-white/5 p-8 rounded-2xl border border-white/10"
+                class="contact-content bg-gray-100 dark:bg-white/5 p-8 rounded-2xl border border-gray-200 dark:border-white/10"
             >
-                <div class="relative group">
+                <div class="space-y-6">
+                    <div>
+                        <label
+                            for="name"
+                            class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-2"
+                            >Name</label
+                        >
+                        <input
+                            type="text"
+                            id="name"
+                            bind:value={name}
+                            class="w-full px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg focus:outline-none focus:border-primary text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                            placeholder="John Doe"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label
+                            for="email"
+                            class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-2"
+                            >Email</label
+                        >
+                        <input
+                            type="email"
+                            id="email"
+                            bind:value={email}
+                            class="w-full px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg focus:outline-none focus:border-primary text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                            placeholder="john@example.com"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label
+                            for="message"
+                            class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-2"
+                            >Message</label
+                        >
+                        <textarea
+                            id="message"
+                            bind:value={message}
+                            rows="4"
+                            class="w-full px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg focus:outline-none focus:border-primary text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 resize-none"
+                            placeholder="Your message..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <!-- Honeypot Field (Hidden from users, catches bots) -->
                     <input
-                        type="text"
-                        id="name"
-                        bind:value={name}
-                        required
-                        maxlength="100"
-                        placeholder=" "
-                        class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors peer"
+                        type="checkbox"
+                        name="botcheck"
+                        bind:checked={botcheck}
+                        style="display: none;"
                     />
-                    <label
-                        for="name"
-                        class="absolute left-4 top-3 text-gray-500 transition-all duration-200 peer-focus:-top-2.5 peer-focus:left-2 peer-focus:text-xs peer-focus:text-primary peer-focus:bg-dark peer-focus:px-1 peer-not-placeholder-shown:-top-2.5 peer-not-placeholder-shown:left-2 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:bg-dark peer-not-placeholder-shown:px-1 pointer-events-none"
+
+                    <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        class="w-full py-3 bg-gradient-to-r from-primary to-secondary rounded-lg font-bold text-white hover:opacity-90 transition-opacity disabled:opacity-50 flex justify-center items-center gap-2"
                     >
-                        Your Name
-                    </label>
-                </div>
+                        {#if isSubmitting}
+                            <span
+                                class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"
+                            ></span>
+                            Sending...
+                        {:else}
+                            Send Message <Send size={18} />
+                        {/if}
+                    </button>
 
-                <div class="relative group">
-                    <input
-                        type="email"
-                        id="email"
-                        bind:value={email}
-                        required
-                        maxlength="254"
-                        placeholder=" "
-                        class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors peer"
-                    />
-                    <label
-                        for="email"
-                        class="absolute left-4 top-3 text-gray-500 transition-all duration-200 peer-focus:-top-2.5 peer-focus:left-2 peer-focus:text-xs peer-focus:text-primary peer-focus:bg-dark peer-focus:px-1 peer-not-placeholder-shown:-top-2.5 peer-not-placeholder-shown:left-2 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:bg-dark peer-not-placeholder-shown:px-1 pointer-events-none"
-                    >
-                        Your Email
-                    </label>
-                </div>
-
-                <div class="relative group">
-                    <textarea
-                        id="message"
-                        bind:value={message}
-                        required
-                        rows="4"
-                        maxlength="5000"
-                        placeholder=" "
-                        class="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors peer resize-none"
-                    ></textarea>
-                    <label
-                        for="message"
-                        class="absolute left-4 top-3 text-gray-500 transition-all duration-200 peer-focus:-top-2.5 peer-focus:left-2 peer-focus:text-xs peer-focus:text-primary peer-focus:bg-dark peer-focus:px-1 peer-not-placeholder-shown:-top-2.5 peer-not-placeholder-shown:left-2 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:bg-dark peer-not-placeholder-shown:px-1 pointer-events-none"
-                    >
-                        Message
-                    </label>
-                </div>
-
-                <!-- Honeypot Field (Hidden from users, catches bots) -->
-                <input
-                    type="checkbox"
-                    name="botcheck"
-                    bind:checked={botcheck}
-                    style="display: none;"
-                />
-
-                <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    class="w-full py-3 bg-gradient-to-r from-primary to-secondary rounded-lg font-bold text-white shadow-lg shadow-primary/20 hover:shadow-primary/40 transform hover:-translate-y-1 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
-                >
-                    {#if isSubmitting}
-                        <Loader2 size={18} class="animate-spin" /> Sending...
-                    {:else}
-                        Send Message <Send size={18} />
+                    {#if submitStatus === "success"}
+                        <p class="text-green-500 text-center text-sm">
+                            Message sent successfully!
+                        </p>
+                    {:else if submitStatus === "error"}
+                        <p class="text-red-500 text-center text-sm">
+                            Failed to send message. Please try again.
+                        </p>
                     {/if}
-                </button>
-
-                {#if submitStatus === "success"}
-                    <div
-                        class="flex items-center gap-2 text-green-400 text-sm bg-green-400/10 p-3 rounded-lg"
-                    >
-                        <CheckCircle size={16} />
-                        {statusMessage}
-                    </div>
-                {:else if submitStatus === "error"}
-                    <div
-                        class="flex items-center gap-2 text-red-400 text-sm bg-red-400/10 p-3 rounded-lg"
-                    >
-                        <AlertCircle size={16} />
-                        {statusMessage}
-                    </div>
-                {/if}
+                </div>
             </form>
         </div>
     </div>

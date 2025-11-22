@@ -2,6 +2,7 @@
   import Navbar from "./components/Navbar.svelte";
   import Hero from "./components/Hero.svelte";
   import About from "./components/About.svelte";
+  import Achievements from "./components/Achievements.svelte";
   import TechStack from "./components/TechStack.svelte";
   import Projects from "./components/Projects.svelte";
   import Experience from "./components/Experience.svelte";
@@ -31,11 +32,12 @@
 </script>
 
 <main
-  class="bg-dark min-h-screen text-white selection:bg-primary/30 selection:text-primary"
+  class="bg-white dark:bg-dark min-h-screen text-gray-900 dark:text-white selection:bg-primary/30 selection:text-primary transition-colors duration-300"
 >
   <Navbar />
   <Hero />
   <About />
+  <Achievements />
   <TechStack />
   <Projects />
   <Experience />

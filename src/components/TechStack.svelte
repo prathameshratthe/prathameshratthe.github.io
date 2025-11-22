@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { Layout, Server, Database } from "lucide-svelte";
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +26,7 @@
 <section
     bind:this={stackSection}
     id="stack"
-    class="py-20 bg-dark/50 text-white"
+    class="py-20 bg-white dark:bg-dark text-gray-900 dark:text-white transition-colors duration-300"
 >
     <div class="container mx-auto px-6">
         <h2
@@ -37,15 +38,24 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {#each techStack as category}
                 <div
-                    class="stack-category p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-primary/30 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
+                    class="stack-category p-6 bg-gray-100 dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
                 >
-                    <h3 class="text-xl font-bold mb-4 text-primary">
+                    <h3
+                        class="text-xl font-bold mb-6 text-primary flex items-center gap-2"
+                    >
+                        {#if category.name === "Frontend"}
+                            <Layout size={20} />
+                        {:else if category.name === "Backend"}
+                            <Server size={20} />
+                        {:else}
+                            <Database size={20} />
+                        {/if}
                         {category.name}
                     </h3>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-3">
                         {#each category.skills as skill}
                             <span
-                                class="px-3 py-1 bg-dark rounded-full text-sm text-gray-300 border border-white/10 hover:border-primary/50 hover:text-white transition-colors cursor-default"
+                                class="px-3 py-1 bg-white dark:bg-white/10 rounded-full text-sm text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/5 hover:text-primary hover:border-primary/50 transition-colors cursor-default"
                             >
                                 {skill}
                             </span>

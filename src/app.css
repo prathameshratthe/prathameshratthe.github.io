@@ -4,8 +4,7 @@
 
 :root {
   font-family: 'Inter', sans-serif;
-  background-color: #0f172a;
-  color: #ffffff;
+  /* Default to dark mode colors if JS fails, but we'll control via class */
 }
 
 body {
@@ -13,7 +12,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   cursor: none;
-  /* Hide default cursor */
+  @apply bg-white text-gray-900 dark:bg-dark dark:text-white;
 }
 
 a,
@@ -41,12 +40,13 @@ button,
 }
 
 /* Larger Selection/Hover Areas */
-a,
+/* Larger Selection/Hover Areas - Removed to fix layout issues */
+/* a,
 button {
   padding: 8px !important;
   margin: -8px;
   transition: transform 0.2s ease;
-}
+} */
 
 /* Hover Effect for Links and Buttons */
 a:hover,

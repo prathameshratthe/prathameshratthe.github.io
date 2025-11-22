@@ -3,15 +3,16 @@
     import { onMount } from "svelte";
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { Briefcase } from "lucide-svelte";
 
     gsap.registerPlugin(ScrollTrigger);
 
-    let expSection: HTMLElement;
+    let experienceSection: HTMLElement;
 
     onMount(() => {
-        gsap.from(".exp-item", {
+        gsap.from(".experience-card", {
             scrollTrigger: {
-                trigger: expSection,
+                trigger: experienceSection,
                 start: "top 80%",
             },
             x: -30,
@@ -23,11 +24,11 @@
 </script>
 
 <section
-    bind:this={expSection}
+    bind:this={experienceSection}
     id="experience"
-    class="py-20 bg-dark/50 text-white"
+    class="py-20 bg-white dark:bg-dark text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300"
 >
-    <div class="container mx-auto px-6 max-w-4xl">
+    <div class="container mx-auto px-6 relative z-10">
         <h2
             class="text-3xl md:text-4xl font-heading font-bold mb-12 flex items-center gap-3"
         >
@@ -35,35 +36,51 @@
         </h2>
 
         <div
-            class="relative border-l-2 border-white/10 ml-3 md:ml-6 space-y-12"
+            class="relative border-l-2 border-gray-200 dark:border-white/10 ml-4 md:ml-8 space-y-12"
         >
-            {#each experience as job}
-                <div class="exp-item relative pl-8 md:pl-12">
-                    <!-- Dot -->
+            {#each experience as exp}
+                <div class="experience-card relative pl-8 md:pl-12">
+                    <!-- Timeline Dot -->
                     <div
-                        class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-dark border-2 border-primary shadow-[0_0_10px_rgba(34,211,238,0.5)]"
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary shadow-[0_0_10px_rgba(34,211,238,0.5)]"
                     ></div>
 
                     <div
-                        class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2"
+                        class="bg-gray-100 dark:bg-white/5 p-6 md:p-8 rounded-2xl border border-gray-200 dark:border-white/10 hover:border-primary/30 transition-all group"
                     >
-                        <h3 class="text-xl font-bold text-white">{job.role}</h3>
-                        <span
-                            class="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0"
+                        <div
+                            class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2"
                         >
-                            {job.period}
-                        </span>
+                            <h3
+                                class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors"
+                            >
+                                {exp.role}
+                            </h3>
+                            <span
+                                class="text-primary font-mono text-sm bg-primary/10 px-3 py-1 rounded-full w-fit"
+                            >
+                                {exp.period}
+                            </span>
+                        </div>
+
+                        <div
+                            class="flex items-center gap-2 text-gray-500 dark:text-gray-400 mb-6"
+                        >
+                            <Briefcase size={16} />
+                            <span class="font-semibold">{exp.company}</span>
+                        </div>
+
+                        <ul class="space-y-3">
+                            {#each exp.description as item}
+                                <li
+                                    class="flex items-start gap-3 text-gray-600 dark:text-gray-300"
+                                >
+                                    <span class="text-primary mt-1.5">▹</span>
+                                    <span>{item}</span>
+                                </li>
+                            {/each}
+                        </ul>
                     </div>
-
-                    <h4 class="text-lg text-secondary font-semibold mb-4">
-                        {job.company}
-                    </h4>
-
-                    <ul class="list-disc list-inside space-y-2 text-gray-400">
-                        {#each job.description as desc}
-                            <li>{desc}</li>
-                        {/each}
-                    </ul>
                 </div>
             {/each}
         </div>

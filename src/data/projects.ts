@@ -5,6 +5,7 @@ export interface Project {
     achievements: string[];
     repoLink: string;
     liveLink: string;
+    category: "Full Stack" | "Security" | "AI/ML";
 }
 
 export const projects: Project[] = [
@@ -19,7 +20,8 @@ export const projects: Project[] = [
             "Designed a scalable REST API with FastAPI."
         ],
         repoLink: "https://github.com/prathameshratthe/ThermalBill",
-        liveLink: "#"
+        liveLink: "#",
+        category: "Full Stack"
     },
     {
         name: "summarIQ",
@@ -31,7 +33,8 @@ export const projects: Project[] = [
             "Utilized NLP models for accurate content analysis."
         ],
         repoLink: "https://github.com/prathameshratthe/summarIQ",
-        liveLink: "#"
+        liveLink: "#",
+        category: "AI/ML"
     },
     {
         name: "OSINT Recon Bot",
@@ -43,7 +46,8 @@ export const projects: Project[] = [
             "Implemented efficient data collection and reporting."
         ],
         repoLink: "https://github.com/prathameshratthe/osint-recon-bot",
-        liveLink: "#"
+        liveLink: "#",
+        category: "Security"
     },
     {
         name: "SecureMedicos",
@@ -55,7 +59,8 @@ export const projects: Project[] = [
             "Patent holder for secure health data protection (Application No: 202421042657)."
         ],
         repoLink: "https://github.com/prathameshratthe/SecureMedicos",
-        liveLink: "#"
+        liveLink: "#",
+        category: "Security"
     },
     {
         name: "Bakery Order Management System",
@@ -67,7 +72,8 @@ export const projects: Project[] = [
             "Designed an intuitive admin dashboard."
         ],
         repoLink: "https://github.com/prathameshratthe/Bakery-Order-Management-System",
-        liveLink: "#"
+        liveLink: "#",
+        category: "Full Stack"
     },
     {
         name: "VulneraTrack",
@@ -79,6 +85,7 @@ export const projects: Project[] = [
             "Provided detailed reports for effective vulnerability management."
         ],
         repoLink: "https://github.com/prathameshratthe/VulneraTrack",
-        liveLink: "#"
+        liveLink: "#",
+        category: "Security"
     }
 ];

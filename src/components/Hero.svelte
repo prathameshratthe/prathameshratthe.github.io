@@ -12,7 +12,40 @@
     isResumeModalOpen.set(true);
   }
 
+  const roles = [
+    "Full Stack Developer",
+    "Cybersecurity Enthusiast",
+    "AI/ML Engineer",
+  ];
+  let currentRoleIndex = 0;
+  let displayedText = "";
+  let isDeleting = false;
+
+  function type() {
+    const currentRole = roles[currentRoleIndex];
+    if (isDeleting) {
+      displayedText = currentRole.substring(0, displayedText.length - 1);
+    } else {
+      displayedText = currentRole.substring(0, displayedText.length + 1);
+    }
+
+    let typeSpeed = 100;
+    if (isDeleting) typeSpeed /= 2;
+
+    if (!isDeleting && displayedText === currentRole) {
+      typeSpeed = 2000; // Pause at end
+      isDeleting = true;
+    } else if (isDeleting && displayedText === "") {
+      isDeleting = false;
+      currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+      typeSpeed = 500;
+    }
+
+    setTimeout(type, typeSpeed);
+  }
+
   onMount(() => {
+    type();
     const tl = gsap.timeline();
 
     tl.from(content, {
@@ -48,7 +81,7 @@
 
 <section
   bind:this={heroSection}
-  class="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark text-white pt-20"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-dark text-gray-900 dark:text-white pt-20 transition-colors duration-300"
 >
   <!-- Background Elements -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -59,7 +92,7 @@
       class="particle absolute top-3/4 right-1/4 w-3 h-3 bg-secondary rounded-full opacity-40 blur-sm"
     ></div>
     <div
-      class="particle absolute top-1/2 left-3/4 w-1 h-1 bg-white rounded-full opacity-30"
+      class="particle absolute top-1/2 left-3/4 w-1 h-1 bg-gray-400 dark:bg-white rounded-full opacity-30"
     ></div>
 
     <div
@@ -85,12 +118,14 @@
           >
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-400 mb-10 font-light">
-          Software Developer
+        <p
+          class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-10 font-light h-8"
+        >
+          {displayedText}<span class="animate-pulse">|</span>
         </p>
 
         <div
-          class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
+          class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center"
         >
           <a
             href="#projects"
@@ -103,7 +138,7 @@
 
           <button
             on:click={openResumeModal}
-            class="group px-8 py-3 bg-white/5 border border-white/10 rounded-full text-white font-semibold hover:bg-white/10 transition-all flex items-center gap-2 cursor-pointer"
+            class="group px-8 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full text-gray-900 dark:text-white font-semibold hover:bg-gray-200 dark:hover:bg-white/10 transition-all flex items-center gap-2 cursor-pointer"
           >
             <Download size={18} /> Download Resume
           </button>
@@ -125,13 +160,13 @@
             <img
               src="/assets/profile.jpg"
               alt="Prathamesh Ratthe"
-              class="w-full h-full object-cover rounded-full border-4 border-dark"
+              class="w-full h-full object-cover rounded-full border-4 border-white dark:border-dark"
             />
           </div>
 
           <!-- Floating Badge -->
           <div
-            class="absolute bottom-4 -left-4 bg-dark/80 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 animate-bounce shadow-xl"
+            class="absolute bottom-4 -left-4 bg-white/80 dark:bg-dark/80 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full flex items-center gap-2 animate-bounce shadow-xl"
           >
             <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"
             ></span>

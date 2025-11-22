@@ -1,12 +1,13 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { Menu, X } from "lucide-svelte";
+    import { Menu, X, Download, Sun, Moon } from "lucide-svelte";
     import { isResumeModalOpen } from "../lib/store";
     import { slide } from "svelte/transition";
     import { gsap } from "gsap";
 
     let isMenuOpen = false;
     let isScrolled = false;
+    let isDark = true;
 
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
@@ -17,7 +18,31 @@
         isMenuOpen = false;
     }
 
+    function toggleTheme() {
+        isDark = !isDark;
+        if (isDark) {
+            document.documentElement.classList.add("dark");
+            localStorage.theme = "dark";
+        } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.theme = "light";
+        }
+    }
+
     onMount(() => {
+        // Initialize Theme
+        if (
+            localStorage.theme === "dark" ||
+            (!("theme" in localStorage) &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+            isDark = true;
+        } else {
+            document.documentElement.classList.remove("dark");
+            isDark = false;
+        }
+
         const handleScroll = () => {
             isScrolled = window.scrollY > 50;
         };
@@ -47,10 +72,13 @@
 </script>
 
 <nav
-    class={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-dark/80 backdrop-blur-md py-4 shadow-lg" : "bg-transparent py-6"}`}
+    class={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 dark:bg-dark/80 backdrop-blur-md py-4 shadow-lg" : "bg-transparent py-6"}`}
 >
     <div class="container mx-auto px-6 flex justify-between items-center">
-        <a href="#" class="nav-logo text-2xl font-heading font-bold text-white">
+        <a
+            href="#"
+            class="nav-logo text-2xl font-heading font-bold text-gray-900 dark:text-white"
+        >
             PR<span class="text-primary">.</span>
         </a>
 
@@ -59,7 +87,7 @@
             {#each ["About", "Skills", "Projects", "Experience", "Contact"] as item}
                 <a
                     href={`#${item.toLowerCase() === "skills" ? "stack" : item.toLowerCase()}`}
-                    class="nav-link group relative text-gray-300 hover:text-primary transition-colors py-2"
+                    class="nav-link group relative text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors py-2"
                 >
                     {item}
                     <span
@@ -69,15 +97,31 @@
             {/each}
 
             <button
-                on:click={openResumeModal}
-                class="nav-link px-5 py-2 bg-primary/10 border border-primary/50 rounded-full text-primary font-semibold hover:bg-primary hover:text-dark transition-all cursor-pointer hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:-translate-y-0.5"
+                on:click={toggleTheme}
+                class="nav-link p-2 rounded-full text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                aria-label="Toggle Theme"
             >
-                Resume
+                {#if isDark}
+                    <Sun size={20} />
+                {:else}
+                    <Moon size={20} />
+                {/if}
             </button>
+
+            <a
+                href="/resume.pdf"
+                download="Prathamesh_Ratthe_Resume.pdf"
+                class="nav-link px-5 py-2 bg-primary/10 border border-primary/50 rounded-full text-primary font-semibold hover:bg-primary hover:text-dark transition-all cursor-pointer hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:-translate-y-0.5 flex items-center gap-2"
+            >
+                <Download size={18} /> Resume
+            </a>
         </div>
 
         <!-- Mobile Menu Button -->
-        <button class="nav-logo md:hidden text-white" on:click={toggleMenu}>
+        <button
+            class="nav-logo md:hidden text-gray-900 dark:text-white"
+            on:click={toggleMenu}
+        >
             {#if isMenuOpen}
                 <X size={28} />
             {:else}
@@ -90,19 +134,35 @@
     {#if isMenuOpen}
         <div
             transition:slide={{ duration: 300 }}
-            class="md:hidden absolute top-full left-0 w-full bg-dark/95 backdrop-blur-md border-b border-white/10 py-4 px-6 flex flex-col gap-4 shadow-2xl"
+            class="md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-white/10 py-4 px-6 flex flex-col gap-4 shadow-2xl"
         >
             {#each ["About", "Skills", "Projects", "Experience", "Contact"] as item}
                 <a
                     href={`#${item.toLowerCase() === "skills" ? "stack" : item.toLowerCase()}`}
-                    class="text-gray-300 hover:text-primary transition-colors"
+                    class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
                     on:click={toggleMenu}>{item}</a
                 >
             {/each}
+
             <button
-                on:click={openResumeModal}
-                class="text-primary font-semibold text-left">Resume</button
+                on:click={toggleTheme}
+                class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors flex items-center gap-2"
             >
+                {#if isDark}
+                    <Sun size={20} /> Light Mode
+                {:else}
+                    <Moon size={20} /> Dark Mode
+                {/if}
+            </button>
+
+            <a
+                href="/resume.pdf"
+                download="Prathamesh_Ratthe_Resume.pdf"
+                class="text-primary font-semibold text-left flex items-center gap-2"
+                on:click={toggleMenu}
+            >
+                <Download size={18} /> Download Resume
+            </a>
         </div>
     {/if}
 </nav>
