@@ -206,21 +206,21 @@
                         <a
                             href="https://github.com/prathameshratthe"
                             target="_blank"
-                            class="p-3 bg-gray-100 dark:bg-white/5 rounded-lg hover:bg-primary hover:text-dark transition-all hover:-translate-y-1"
+                            class="p-3 bg-gray-100 dark:bg-white/5 rounded-lg hover:text-primary hover:bg-primary/10 transition-all hover:-translate-y-1"
                         >
                             <Github size={24} />
                         </a>
                         <a
                             href="https://linkedin.com/in/prathameshratthe"
                             target="_blank"
-                            class="p-3 bg-gray-100 dark:bg-white/5 rounded-lg hover:bg-primary hover:text-dark transition-all hover:-translate-y-1"
+                            class="p-3 bg-gray-100 dark:bg-white/5 rounded-lg hover:text-primary hover:bg-primary/10 transition-all hover:-translate-y-1"
                         >
                             <Linkedin size={24} />
                         </a>
                         <a
                             href="https://twitter.com/prathameshratthe"
                             target="_blank"
-                            class="p-3 bg-gray-100 dark:bg-white/5 rounded-lg hover:bg-primary hover:text-dark transition-all hover:-translate-y-1"
+                            class="p-3 bg-gray-100 dark:bg-white/5 rounded-lg hover:text-primary hover:bg-primary/10 transition-all hover:-translate-y-1"
                         >
                             <Twitter size={24} />
                         </a>
