@@ -245,6 +245,7 @@
                             id="name"
                             bind:value={name}
                             class="w-full px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg focus:outline-none focus:border-primary text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                            placeholder="John Doe"
                             required
                         />
                     </div>
@@ -259,6 +260,7 @@
                             id="email"
                             bind:value={email}
                             class="w-full px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg focus:outline-none focus:border-primary text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                            placeholder="john.doe@example.com"
                             required
                         />
                     </div>
@@ -273,6 +275,7 @@
                             bind:value={message}
                             rows="4"
                             class="w-full px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg focus:outline-none focus:border-primary text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 resize-none"
+                            placeholder="Your Message"
                             required
                         ></textarea>
                     </div>
