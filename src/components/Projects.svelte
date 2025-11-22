@@ -62,9 +62,9 @@
                 <!-- svelte-ignore a11y_no_static_element_interactions -->
                 <div
                     id={`project-card-${i}`}
-                    class="project-card group relative bg-gray-100 dark:bg-white/5 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50"
+                    class="project-card h-full flex flex-col group relative bg-gray-100 dark:bg-white/5 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50"
                 >
-                    <div class="p-8 relative z-10">
+                    <div class="p-8 relative z-10 flex flex-col h-full">
                         <div class="flex justify-between items-start mb-4">
                             <h3
                                 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors"
@@ -88,7 +88,7 @@
                             {project.description}
                         </p>
 
-                        <div class="space-y-3 mb-8">
+                        <div class="space-y-3 mb-8 flex-grow">
                             {#each project.achievements as achievement}
                                 <div class="flex items-start gap-2">
                                     <span class="text-primary mt-1">▹</span>
@@ -100,7 +100,7 @@
                             {/each}
                         </div>
 
-                        <div class="flex flex-wrap gap-3">
+                        <div class="flex flex-wrap gap-3 mt-auto">
                             {#each project.tech as tech}
                                 <span
                                     class="px-3 py-1 bg-white dark:bg-white/10 rounded-full text-xs font-mono text-primary border border-gray-200 dark:border-white/5"
