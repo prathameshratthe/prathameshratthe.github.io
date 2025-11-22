@@ -125,20 +125,20 @@
         </p>
 
         <div
-          class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center"
+          class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-stretch sm:items-center w-full sm:w-auto"
         >
           <a
             href="#projects"
-            class="group relative px-8 py-3 bg-white dark:bg-primary-dark/10 border-2 border-primary dark:border-primary-dark rounded-full text-primary dark:text-primary-dark font-semibold overflow-hidden transition-all hover:bg-primary hover:text-white dark:hover:bg-primary-dark dark:hover:text-dark hover:shadow-lg"
+            class="w-full sm:w-auto group relative px-8 py-3 bg-white dark:bg-primary-dark/10 border-2 border-primary dark:border-primary-dark rounded-full text-primary dark:text-primary-dark font-semibold overflow-hidden transition-all hover:bg-primary hover:text-white dark:hover:bg-primary-dark dark:hover:text-dark hover:shadow-lg text-center"
           >
-            <span class="relative z-10 flex items-center gap-2">
+            <span class="relative z-10 flex items-center justify-center gap-2">
               View Projects <ArrowRight size={18} />
             </span>
           </a>
 
           <button
             on:click={openResumeModal}
-            class="group px-8 py-3 bg-white dark:bg-white/5 border-2 border-black dark:border-white/10 rounded-full text-black dark:text-white font-semibold hover:bg-black hover:text-white dark:hover:bg-white/10 transition-all flex items-center gap-2 cursor-pointer"
+            class="w-full sm:w-auto group px-8 py-3 bg-white dark:bg-white/5 border-2 border-black dark:border-white/10 rounded-full text-black dark:text-white font-semibold hover:bg-black hover:text-white dark:hover:bg-white/10 transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
             <Download size={18} /> Download Resume
           </button>
