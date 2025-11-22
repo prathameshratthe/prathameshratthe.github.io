@@ -28,7 +28,7 @@
     id="experience"
     class="py-20 bg-white dark:bg-dark text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300"
 >
-    <div class="container mx-auto px-6 relative z-10">
+    <div class="container mx-auto px-6 relative z-10 max-w-4xl">
         <h2
             class="text-3xl md:text-4xl font-heading font-bold mb-12 flex items-center gap-3"
         >
