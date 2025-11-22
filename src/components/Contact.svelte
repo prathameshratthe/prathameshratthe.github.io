@@ -57,20 +57,26 @@
             return;
         }
 
-        // Check reCAPTCHA
-        const recaptchaResponse = (window as any).grecaptcha?.getResponse();
-        if (!recaptchaResponse) {
+        isSubmitting = true;
+        submitStatus = "idle";
+
+        // Get reCAPTCHA v3 token
+        try {
+            const token = await (window as any).grecaptcha.execute(
+                "6LcCyBQsAAAAAODAWBn7cCMVJkNZC7NZWNGy6Vj_",
+                { action: "submit" },
+            );
+            recaptchaToken = token;
+        } catch (error) {
             submitStatus = "error";
-            statusMessage = "Please complete the CAPTCHA verification.";
+            statusMessage = "CAPTCHA verification failed. Please try again.";
+            isSubmitting = false;
             setTimeout(() => {
                 submitStatus = "idle";
                 statusMessage = "";
             }, 3000);
             return;
         }
-
-        isSubmitting = true;
-        submitStatus = "idle";
 
         try {
             const response = await fetch("https://api.web3forms.com/submit", {
@@ -85,6 +91,7 @@
                     email,
                     message,
                     botcheck, // Honeypot
+                    "g-recaptcha-response": recaptchaToken, // reCAPTCHA v3 token
                 }),
             });
 
@@ -249,12 +256,6 @@
                     bind:checked={botcheck}
                     style="display: none;"
                 />
-
-                <!-- Google reCAPTCHA -->
-                <div
-                    class="g-recaptcha"
-                    data-sitekey="6LcCyBQsAAAAAODAWBn7cCMVJkNZC7NZWNGy6Vj_"
-                ></div>
 
                 <button
                     type="submit"
