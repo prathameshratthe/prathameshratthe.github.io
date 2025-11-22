@@ -2,11 +2,12 @@
     import { onMount } from "svelte";
     import { Menu, X, Download, Sun, Moon } from "lucide-svelte";
     import { isResumeModalOpen } from "../lib/store";
-    import { slide } from "svelte/transition";
+    import { slide, fly } from "svelte/transition";
     import { gsap } from "gsap";
 
     let isMenuOpen = false;
     let isScrolled = false;
+    let showResumeBtn = false;
     let isDark = true;
 
     function toggleMenu() {
@@ -45,6 +46,7 @@
 
         const handleScroll = () => {
             isScrolled = window.scrollY > 50;
+            showResumeBtn = window.scrollY > window.innerHeight * 0.6;
         };
         window.addEventListener("scroll", handleScroll);
 
@@ -108,13 +110,17 @@
                 {/if}
             </button>
 
-            <a
-                href="/resume.pdf"
-                download="Prathamesh_Ratthe_Resume.pdf"
-                class="nav-link px-5 py-2 bg-primary/10 border border-primary/50 rounded-full text-primary font-semibold hover:bg-primary hover:text-dark transition-all cursor-pointer hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:-translate-y-0.5 flex items-center gap-2"
-            >
-                <Download size={18} /> Resume
-            </a>
+            {#if showResumeBtn}
+                <div transition:fly={{ y: -20, duration: 500 }}>
+                    <a
+                        href="/resume.pdf"
+                        download="Prathamesh_Ratthe_Resume.pdf"
+                        class="nav-link px-5 py-2 bg-primary/10 border border-primary/50 rounded-full text-primary font-semibold hover:bg-primary hover:text-dark transition-all cursor-pointer hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:-translate-y-0.5 flex items-center gap-2"
+                    >
+                        <Download size={18} /> Resume
+                    </a>
+                </div>
+            {/if}
         </div>
 
         <!-- Mobile Menu Button -->
