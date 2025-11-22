@@ -21,7 +21,6 @@
     let email = "";
     let message = "";
     let botcheck = false; // Honeypot field
-    let recaptchaToken = ""; // reCAPTCHA token
     let isSubmitting = false;
     let submitStatus: "idle" | "success" | "error" = "idle";
     let statusMessage = "";
@@ -54,35 +53,6 @@
                 submitStatus = "idle";
                 statusMessage = "";
             }, 3000);
-            return;
-        }
-
-        isSubmitting = true;
-        submitStatus = "idle";
-
-        // Get reCAPTCHA v3 token
-        try {
-            const token = await (window as any).grecaptcha.execute(
-                "6LcCyBQsAAAAAODAWBn7cCMVJkNZC7NZWNGy6Vj_",
-                { action: "submit" },
-            );
-            recaptchaToken = token;
-        } catch (error) {
-            submitStatus = "error";
-            statusMessage = "CAPTCHA verification failed. Please try again.";
-            isSubmitting = false;
-            setTimeout(() => {
-                submitStatus = "idle";
-                statusMessage = "";
-            }, 3000);
-            return;
-        }
-
-        try {
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
                     Accept: "application/json",
                 },
                 body: JSON.stringify({
@@ -91,7 +61,6 @@
                     email,
                     message,
                     botcheck, // Honeypot
-                    "g-recaptcha-response": recaptchaToken, // reCAPTCHA v3 token
                 }),
             });
 
