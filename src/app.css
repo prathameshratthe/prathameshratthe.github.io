@@ -42,26 +42,14 @@ button,
 
 /* Larger Selection/Hover Areas */
 a,
-button,
-.cursor-pointer {
-  position: relative;
-}
-
-a::before,
-button::before,
-.cursor-pointer::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border-radius: inherit;
+button {
+  padding: 8px !important;
+  margin: -8px;
+  transition: transform 0.2s ease;
 }
 
 /* Hover Effect for Links and Buttons */
 a:hover,
 button:hover {
   transform: scale(1.05);
-  transition: transform 0.2s ease;
 }
