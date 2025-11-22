@@ -20,6 +20,16 @@ button,
   cursor: none;
 }
 
+/* Show default cursor on hCaptcha widget */
+.h-captcha,
+.h-captcha iframe {
+  cursor: auto !important;
+}
+
+.h-captcha * {
+  cursor: auto !important;
+}
+
 /* Selection Color */
 ::selection {
   @apply bg-primary text-white;
