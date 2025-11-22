@@ -3,7 +3,7 @@
     import { onMount } from "svelte";
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
-    import { Github, ExternalLink } from "lucide-svelte";
+    import { Github } from "lucide-svelte";
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -87,13 +87,6 @@
                                     class="text-gray-400 hover:text-primary transition-colors"
                                 >
                                     <Github size={20} />
-                                </a>
-                                <a
-                                    href={project.liveLink}
-                                    target="_blank"
-                                    class="text-gray-400 hover:text-primary transition-colors"
-                                >
-                                    <ExternalLink size={20} />
                                 </a>
                             </div>
                         </div>
