@@ -9,8 +9,5 @@
         <p class="text-gray-600 dark:text-gray-400">
             © {new Date().getFullYear()} Prathamesh Ratthe. All rights reserved.
         </p>
-        <p class="text-gray-500 dark:text-gray-500 text-base mt-2">
-            Built with ❤️ and 🥤
-        </p>
     </div>
 </footer>
