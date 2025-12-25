@@ -7,9 +7,20 @@ export interface Experience {
 
 export const experience: Experience[] = [
     {
+        role: "Assistant System Engineer",
+        company: "Tata Consultancy Services (TCS)",
+        period: "Dec 2025 – Present",
+        description: [
+            "Working on enterprise-grade software development and maintenance projects.",
+            "Contributing to backend and API development, debugging, and performance optimization.",
+            "Collaborating with cross-functional teams to deliver scalable and reliable solutions.",
+            "Following Agile/Scrum practices and adhering to coding standards and best practices."
+        ]
+    },
+    {
         role: "Secretary & Joint Secretary",
         company: "Cybersecurity Students’ Executive Council, RCOEM",
-        period: "2023 - Present",
+        period: "2023 - 2025",
         description: [
             "Led the executive council in organizing events and workshops.",
             "Managed a team of student volunteers.",
@@ -19,7 +30,7 @@ export const experience: Experience[] = [
     {
         role: "Class Representative",
         company: "RCOEM",
-        period: "4 Semesters",
+        period: "2023 - 2024",
         description: [
             "Represented the class in official meetings.",
             "Coordinated between students and faculty.",
