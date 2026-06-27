@@ -7,14 +7,13 @@ export interface Experience {
 
 export const experience: Experience[] = [
     {
-        role: "Assistant System Engineer",
+        role: "Gen AI Engineer",
         company: "Tata Consultancy Services (TCS)",
         period: "Dec 2025 – Present",
         description: [
-            "Working on enterprise-grade software development and maintenance projects.",
-            "Contributing to backend and API development, debugging, and performance optimization.",
-            "Collaborating with cross-functional teams to deliver scalable and reliable solutions.",
-            "Following Agile/Scrum practices and adhering to coding standards and best practices."
+            "Contributed to the development and deployment of AI-powered enterprise solutions on the iR2D.ai platform for global clients including Airbus and Siemens Energy.",
+            "Worked on integrating Generative AI workflows, backend APIs, and cloud-native services using Python and FastAPI to support AI-driven enterprise applications.",
+            "Collaborated with Agile teams on deployment, monitoring, testing, and optimization of scalable AI solutions using Git-based workflows and CI/CD pipelines."
         ]
     },
     {

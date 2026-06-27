@@ -11,12 +11,12 @@ export interface Project {
 export const projects: Project[] = [
     {
         name: "ThermalBill",
-        description: "Full-stack restaurant billing and management system with menu, billing, and organization modules.",
+        description: "Full-stack restaurant billing and management system with React frontend, backend APIs, Redis caching, and cloud storage on AWS.",
         tech: ["FastAPI", "React", "TypeScript", "Tailwind CSS", "Redis", "MySQL", "AWS S3", "Docker"],
         achievements: [
-            "Built a full-stack restaurant billing and management system.",
-            "Integrated Redis caching for faster data retrieval.",
-            "Implemented AWS S3 for secure file storage.",
+            "Architected and implemented a full-stack restaurant billing and management system.",
+            "Integrated Redis caching and AWS cloud storage, improving response consistency.",
+            "Supported multi-role operational workflows across menu, billing, and organization modules.",
             "Designed a scalable REST API with FastAPI."
         ],
         repoLink: "https://github.com/prathameshratthe/ThermalBill",
@@ -50,13 +50,13 @@ export const projects: Project[] = [
         category: "Security"
     },
     {
-        name: "SecureMedicos",
-        description: "Secure platform for storing and managing health records using encryption techniques.",
+        name: "SecureMedicose",
+        description: "Encrypted health records platform with backend APIs, authentication, and role-based access control.",
         tech: ["Python", "FastAPI", "AES/RSA Encryption", "JWT Auth", "PostgreSQL", "AWS Security"],
         achievements: [
-            "Developed a secure platform for health records.",
-            "Ensured user authentication and data privacy through advanced security protocols.",
-            "Patent holder for secure health data protection (Application No: 202421042657)."
+            "Developed a secure health records platform with backend APIs, encryption, and authentication.",
+            "Implemented role-based access control for secure healthcare data handling.",
+            "Resulted in a patented solution for secure health data protection (Indian Patent Office, 2024)."
         ],
         repoLink: "https://github.com/prathameshratthe/SecureMedicos",
         liveLink: "#",
@@ -77,12 +77,12 @@ export const projects: Project[] = [
     },
     {
         name: "VulneraTrack",
-        description: "Web extension to track and identify security vulnerabilities in real time.",
+        description: "Real-time security vulnerability scanner integrated with backend logic to identify common web vulnerabilities.",
         tech: ["JavaScript", "React", "Chrome Extension APIs", "Cybersecurity Scanning", "Git"],
         achievements: [
-            "Developed a web extension for real-time vulnerability tracking.",
-            "Enabled seamless browser integration.",
-            "Provided detailed reports for effective vulnerability management."
+            "Built a browser-based security scanning application for real-time vulnerability detection.",
+            "Integrated with backend logic to identify common web vulnerabilities.",
+            "Generated actionable security insights and detailed reports."
         ],
         repoLink: "https://github.com/prathameshratthe/VulneraTrack",
         liveLink: "#",
