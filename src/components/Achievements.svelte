@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
-    import { Award, ExternalLink, Shield, Code, Terminal } from "lucide-svelte";
+    import { Award, ExternalLink, Shield, Code, Terminal, BookOpen } from "lucide-svelte";
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +19,39 @@
             bg: "bg-primary/10 dark:bg-green-400/10",
             border: "border-primary/20 dark:border-green-400/20",
             link: "#",
+        },
+        {
+            title: "Google Project Management",
+            organization: "Coursera (2024)",
+            description: "Professional Certificate in Project Management",
+            id: "View Certificate",
+            icon: BookOpen,
+            color: "text-primary dark:text-blue-400",
+            bg: "bg-primary/10 dark:bg-blue-400/10",
+            border: "border-primary/20 dark:border-blue-400/20",
+            link: "https://www.credly.com/users/prathameshratthe",
+        },
+        {
+            title: "Google IT Support",
+            organization: "Coursera (2024)",
+            description: "Professional Certificate in IT Support",
+            id: "View Certificate",
+            icon: BookOpen,
+            color: "text-primary dark:text-blue-400",
+            bg: "bg-primary/10 dark:bg-blue-400/10",
+            border: "border-primary/20 dark:border-blue-400/20",
+            link: "https://www.credly.com/users/prathameshratthe",
+        },
+        {
+            title: "Zero Trust Cloud Associate",
+            organization: "Zscaler (2024)",
+            description: "Certified in Zero Trust Architecture",
+            id: "View Certificate",
+            icon: Shield,
+            color: "text-primary dark:text-cyan-400",
+            bg: "bg-primary/10 dark:bg-cyan-400/10",
+            border: "border-primary/20 dark:border-cyan-400/20",
+            link: "https://www.credly.com/users/prathameshratthe",
         },
         {
             title: "Credly Badges",

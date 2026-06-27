@@ -57,11 +57,11 @@
                     class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6"
                 >
                     I'm a <span class="text-primary font-semibold"
-                        >Software Developer</span
-                    > passionate about building secure, scalable solutions. My work
-                    spans full-stack development, cloud computing, and cybersecurity
-                    — transforming complex challenges into impactful, real-world
-                    software experiences.
+                        >Gen AI Engineer</span
+                    > with experience building and deploying AI-powered enterprise
+                    solutions using LLMs, AI automation workflows, FastAPI, Python,
+                    React, and cloud-native architectures — transforming complex
+                    challenges into scalable, real-world applications.
                 </p>
 
                 <p class="text-gray-500 dark:text-gray-400 mb-8 italic">

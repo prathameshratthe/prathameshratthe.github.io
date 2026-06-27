@@ -5,23 +5,27 @@ export interface TechCategory {
 
 export const techStack: TechCategory[] = [
     {
+        name: "AI & GenAI",
+        skills: ["Large Language Models (LLMs)", "OpenAI APIs", "Prompt Engineering", "RAG", "AI Automation Workflows"]
+    },
+    {
         name: "Frontend",
-        skills: ["React", "Svelte", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"]
+        skills: ["React", "Svelte", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5", "CSS3"]
     },
     {
         name: "Backend",
-        skills: ["FastAPI", "Python", "Node.js", "REST APIs"]
+        skills: ["FastAPI", "Python", "Node.js", "REST APIs", "API Integration", "Microservices Architecture"]
     },
     {
         name: "Database",
-        skills: ["MySQL", "PostgreSQL", "Redis"]
+        skills: ["PostgreSQL", "MySQL", "Redis"]
     },
     {
-        name: "DevOps & Cloud",
-        skills: ["Docker", "AWS (S3, Security)", "Zscaler", "Cloud Computing", "Git", "Linux"]
+        name: "Cloud & DevOps",
+        skills: ["AWS (S3, EC2, Lambda, API Gateway)", "Docker", "CI/CD Pipelines", "Git", "GitHub Actions"]
     },
     {
-        name: "Tools & Security",
-        skills: ["VS Code", "Postman", "Wireshark", "Nmap", "BigQuery", "Figma"]
+        name: "Security",
+        skills: ["JWT", "OAuth", "AES & RSA Encryption", "Secure API Architecture"]
     }
 ];
